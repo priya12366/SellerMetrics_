@@ -1,0 +1,35 @@
+# SellerMetrics — Backend dependencies
+# Target: Python 3.12  (pinned to the exact versions the app was built & tested with)
+#
+# Install with:  pip install -r requirements.txt
+
+# --- Web framework / server ---
+fastapi==0.140.0
+uvicorn==0.51.0
+python-multipart==0.0.32      # required by FastAPI for file uploads (Orders/Settlements upload)
+
+# --- Database ---
+SQLAlchemy==2.0.51
+PyMySQL==1.2.0                 # MySQL driver used in the SQLAlchemy connection URL
+
+# --- Validation ---
+pydantic==2.13.4
+email-validator==2.3.0        # required by pydantic EmailStr (register/login)
+
+# --- Authentication & security ---
+python-jose==3.5.0            # JWT encode/decode (HS256)
+bcrypt==5.0.0                 # password hashing
+
+# --- Configuration ---
+python-dotenv==1.2.2          # loads backend/.env
+
+# --- File parsing ---
+openpyxl==3.1.5               # reads settlement .xlsx files on upload
+
+# --- Analytics / internal forecasting service ---
+# (pandas/numpy/scikit-learn back the /api/ml route + report calculations.
+#  Forecasting is NOT exposed in the user-facing UI, but these are imported at
+#  startup, so they are required for the backend to boot.)
+pandas==3.0.5
+numpy==2.5.2
+scikit-learn==1.9.0
