@@ -1,0 +1,180 @@
+/* src/styles/FeaturesSection.css */
+
+.features-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 120px 20px 100px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9f7ff 50%, #ffffff 100%);
+  overflow: hidden;
+}
+
+.features-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.features-header {
+  text-align: center;
+  margin-bottom: 24px; /* Minimal gap to cards */
+  max-width: 650px; /* Reduced width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.features-title {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: clamp(32px, 3.5vw, 42px);
+  font-weight: 800;
+  color: #0F172A; /* Solid dark color */
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 8px; /* Tighter to subtitle */
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.features-subtitle {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: clamp(16px, 1.5vw, 18px);
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.5;
+  max-width: 550px;
+  animation: fadeUp 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+/* Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; /* Tighter gap */
+  width: 100%;
+  animation: fadeUp 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+/* Card */
+.feature-card-modern {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid rgba(91, 61, 245, 0.12); /* Thin purple border */
+  padding: 48px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Gradient Border effect via pseudo-element */
+.feature-card-modern::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 24px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #5B3DF5, rgba(91, 61, 245, 0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.feature-card-modern:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(91, 61, 245, 0.12), 0 0 30px rgba(91, 61, 245, 0.04);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.feature-card-modern:hover::before {
+  opacity: 1;
+}
+
+/* Icon */
+.feature-icon-wrapper {
+  background: linear-gradient(135deg, rgba(91, 61, 245, 0.1) 0%, rgba(91, 61, 245, 0.02) 100%);
+  border: 1px solid rgba(91, 61, 245, 0.06);
+  border-radius: 16px;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.feature-icon-text {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.feature-card-modern:hover .feature-icon-wrapper {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, rgba(91, 61, 245, 0.15) 0%, rgba(91, 61, 245, 0.04) 100%);
+}
+
+/* Text */
+.feature-card-title {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.feature-card-desc {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .features-wrapper {
+    padding: 80px 20px;
+  }
+  .feature-card-modern {
+    padding: 40px 24px;
+  }
+}
