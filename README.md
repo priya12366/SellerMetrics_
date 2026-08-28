@@ -453,3 +453,4 @@ SellerMetrics/
 
 **Not included in the package** (create/generate locally): `node_modules/`,
 `frontend/dist/`, the Python `venv/`, `__pycache__/`, and any real `.env`.
+"# SellerMetrics_" 
