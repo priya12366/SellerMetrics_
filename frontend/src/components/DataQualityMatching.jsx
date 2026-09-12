@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, AlertCircle, CheckCircle2, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config';
 
 export default function DataQualityMatching() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export default function DataQualityMatching() {
     if (!token) return;
     try {
       setLoading(true);
-      const res = await fetch('http://127.0.0.1:8000/api/reports/matching-summary', {
+      const res = await fetch(`${API_URL}/api/reports/matching-summary`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.status === 401) {
@@ -52,7 +53,7 @@ export default function DataQualityMatching() {
     try {
       setOrdersLoading(true);
       const skip = page * 10;
-      const res = await fetch(`http://127.0.0.1:8000/api/reports/unmatched-orders?skip=${skip}&limit=10`, {
+      const res = await fetch(`${API_URL}/api/reports/unmatched-orders?skip=${skip}&limit=10`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {
@@ -75,8 +76,8 @@ export default function DataQualityMatching() {
     try {
       setPaymentsLoading(true);
       const skip = page * 10;
-      const res = await fetch(`http://127.0.0.1:8000/api/reports/unmatched-payments?skip=${skip}&limit=10`, {
-        headers: { 'Authorization': `Bearer ${token}` }
+    const res = await fetch(`${API_URL}/api/reports/unmatched-payments?skip=${skip}&limit=10`, {
+          headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {
         const result = await res.json();

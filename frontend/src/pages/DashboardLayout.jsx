@@ -47,8 +47,9 @@ export default function DashboardLayout() {
         return;
       }
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/auth/me', {
-          headers: {
+        const response = await fetch('https://sellermetrics-b.onrender.com/api/auth/me', {
+
+        headers: {
             'Authorization': `Bearer ${token}`
           }
         });
