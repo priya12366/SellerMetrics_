@@ -26,7 +26,7 @@ export default function PeriodAnalysisPage() {
       }
 
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/analytics/available-periods', {
+        const res = await fetch('https://sellermetrics-b.onrender.com/api/analytics/available-periods', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.status === 401) {
@@ -63,7 +63,7 @@ export default function PeriodAnalysisPage() {
     setError(null);
     const token = localStorage.getItem('access_token');
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/analytics/period-analysis?year=${selectedPeriodYear}&month=${selectedPeriodMonth}`, {
+      const res = await fetch(`https://sellermetrics-b.onrender.com/api/analytics/period-analysis?year=${selectedPeriodYear}&month=${selectedPeriodMonth}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.status === 401) {
@@ -429,3 +429,4 @@ export default function PeriodAnalysisPage() {
 // ---------------------------------------------------------------------------
 // (HighlightCard removed — Best & Worst Products now render as a responsive
 // Metric | Product | SKU | Value table inline above.)
+

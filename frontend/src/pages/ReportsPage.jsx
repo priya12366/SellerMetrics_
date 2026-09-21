@@ -46,9 +46,9 @@ export default function ReportsPage() {
       const headers = { Authorization: `Bearer ${token}` };
       try {
         const [sRes, mRes, moRes] = await Promise.all([
-          fetch('http://127.0.0.1:8000/api/reports/summary', { headers }),
-          fetch('http://127.0.0.1:8000/api/reports/matching-summary', { headers }),
-          fetch('http://127.0.0.1:8000/api/analytics/monthly-summary', { headers }),
+          fetch('https://sellermetrics-b.onrender.com/api/reports/summary', { headers }),
+          fetch('https://sellermetrics-b.onrender.com/api/reports/matching-summary', { headers }),
+          fetch('https://sellermetrics-b.onrender.com/api/analytics/monthly-summary', { headers }),
         ]);
         if ([sRes, mRes, moRes].some((r) => r.status === 401)) {
           localStorage.removeItem('access_token');
@@ -336,3 +336,4 @@ function BigStat({ label, value, icon: Icon, tone, hint }) {
     </div>
   );
 }
+

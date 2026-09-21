@@ -101,7 +101,7 @@ export default function SettlementsPage() {
       }
       
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/settlements', {
+        const res = await fetch('https://sellermetrics-b.onrender.com/api/settlements', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         
@@ -547,3 +547,4 @@ export default function SettlementsPage() {
     </div>
   );
 }
+

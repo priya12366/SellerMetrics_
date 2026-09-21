@@ -43,7 +43,7 @@ export default function ForecastingPage() {
     }
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/ml/forecast?days=${forecastDays}`, {
+      const response = await fetch(`https://sellermetrics-b.onrender.com/api/ml/forecast?days=${forecastDays}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       
@@ -357,3 +357,4 @@ function ForecastKPI({ title, value, icon: Icon, color, isActive, onClick }) {
     </button>
   );
 }
+

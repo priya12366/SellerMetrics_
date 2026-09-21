@@ -52,7 +52,7 @@ export default function ReturnsPage() {
         return;
       }
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/settlements', {
+        const res = await fetch('https://sellermetrics-b.onrender.com/api/settlements', {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.status === 401) {
@@ -264,3 +264,4 @@ function StatCard({ label, value, icon: Icon, tone, subtitle }) {
     </div>
   );
 }
+

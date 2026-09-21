@@ -35,7 +35,7 @@ export default function ProductsPage() {
         return;
       }
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/analytics/product-profitability', {
+        const res = await fetch('https://sellermetrics-b.onrender.com/api/analytics/product-profitability', {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.status === 401) {
@@ -281,3 +281,4 @@ function StatCard({ label, value, icon: Icon, tone, subtitle }) {
     </div>
   );
 }
+

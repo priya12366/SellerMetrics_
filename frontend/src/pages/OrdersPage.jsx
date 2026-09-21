@@ -17,7 +17,7 @@ export default function OrdersPage() {
       }
 
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/orders', {
+        const response = await fetch('https://sellermetrics-b.onrender.com/api/orders', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -146,3 +146,4 @@ export default function OrdersPage() {
     </div>
   );
 }
+

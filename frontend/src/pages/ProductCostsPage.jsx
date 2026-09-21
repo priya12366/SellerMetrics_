@@ -37,7 +37,7 @@ export default function ProductCostsPage() {
     }
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/product-costs/summary', {
+      const response = await fetch('https://sellermetrics-b.onrender.com/api/product-costs/summary', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
 
@@ -71,7 +71,7 @@ export default function ProductCostsPage() {
     const token = localStorage.getItem('access_token');
     
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/product-costs/', {
+      const response = await fetch('https://sellermetrics-b.onrender.com/api/product-costs/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ export default function ProductCostsPage() {
     const token = localStorage.getItem('access_token');
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/product-costs/${id}`, {
+      const response = await fetch(`https://sellermetrics-b.onrender.com/api/product-costs/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -295,3 +295,4 @@ export default function ProductCostsPage() {
     </div>
   );
 }
+
