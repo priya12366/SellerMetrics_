@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../config';
 import { 
   BarChart2, 
   Loader2, 
@@ -78,7 +79,7 @@ export default function AnalyticsPage() {
 
   const fetchHistoricalData = async () => {
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/analytics/historical-trend?days=${chartPeriod}`, { headers: getHeaders() });
+      const res = await fetch(`${API_URL}/api/analytics/historical-trend?days=${chartPeriod}`, { headers: getHeaders() });
       if (res.ok) {
         setHistoricalData(await res.json());
       }
@@ -93,10 +94,10 @@ export default function AnalyticsPage() {
     try {
       const headers = getHeaders();
       const [matchingRes, profitRes, productRes, historicalRes] = await Promise.all([
-        fetch('http://127.0.0.1:8000/api/analytics/matching-summary', { headers }),
-        fetch('http://127.0.0.1:8000/api/analytics/profit-summary', { headers }),
-        fetch('http://127.0.0.1:8000/api/analytics/product-profitability', { headers }),
-        fetch(`http://127.0.0.1:8000/api/analytics/historical-trend?days=${chartPeriod}`, { headers })
+        fetch(`${API_URL}/api/analytics/matching-summary`, { headers }),
+        fetch(`${API_URL}/api/analytics/profit-summary`, { headers }),
+        fetch(`${API_URL}/api/analytics/product-profitability`, { headers }),
+        fetch(`${API_URL}/api/analytics/historical-trend?days=${chartPeriod}`, { headers })
       ]);
       
       if (!matchingRes.ok || !profitRes.ok || !productRes.ok) {
@@ -131,7 +132,7 @@ export default function AnalyticsPage() {
   const fetchUnmatchedOrders = async () => {
     try {
       const skip = uoPage * PAGE_SIZE;
-      const res = await fetch(`http://127.0.0.1:8000/api/analytics/unmatched-orders?skip=${skip}&limit=${PAGE_SIZE}`, { headers: getHeaders() });
+      const res = await fetch(`${API_URL}/api/analytics/unmatched-orders?skip=${skip}&limit=${PAGE_SIZE}`, { headers: getHeaders() });
       if (res.ok) {
         const data = await res.json();
         setUnmatchedOrders(data.items);
@@ -143,7 +144,7 @@ export default function AnalyticsPage() {
   const fetchUnmatchedPayments = async () => {
     try {
       const skip = upPage * PAGE_SIZE;
-      const res = await fetch(`http://127.0.0.1:8000/api/analytics/unmatched-payments?skip=${skip}&limit=${PAGE_SIZE}`, { headers: getHeaders() });
+      const res = await fetch(`${API_URL}/api/analytics/unmatched-payments?skip=${skip}&limit=${PAGE_SIZE}`, { headers: getHeaders() });
       if (res.ok) {
         const data = await res.json();
         setUnmatchedPayments(data.items);
