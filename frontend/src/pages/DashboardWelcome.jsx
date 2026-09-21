@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
+import { API_URL } from '../config';
 import {
   UploadCloud, FileSpreadsheet, AlertCircle, CheckCircle2, X, FileText,
   TrendingUp, ShoppingCart, DollarSign, Percent, RefreshCcw, FileCheck2,
@@ -52,14 +53,14 @@ export default function DashboardWelcome() {
       const [
         summaryRes, profitRes, matchingRes, trendRes, productRes, monthlyRes, historyRes, returnsRtoRes
       ] = await Promise.all([
-        fetch('http://127.0.0.1:8000/api/reports/summary', { headers }),
-        fetch('http://127.0.0.1:8000/api/analytics/profit-summary', { headers }),
-        fetch('http://127.0.0.1:8000/api/analytics/matching-summary', { headers }),
-        fetch(`http://127.0.0.1:8000/api/analytics/historical-trend?days=${chartDays}`, { headers }),
-        fetch('http://127.0.0.1:8000/api/analytics/product-profitability', { headers }),
-        fetch('http://127.0.0.1:8000/api/analytics/monthly-summary', { headers }),
-        fetch('http://127.0.0.1:8000/api/import-history', { headers }),
-        fetch('http://127.0.0.1:8000/api/analytics/returns-rto-analysis', { headers })
+        fetch('https://sellermetrics-b.onrender.com/api/reports/summary', { headers }),
+        fetch('https://sellermetrics-b.onrender.com/api/analytics/profit-summary', { headers }),
+        fetch('https://sellermetrics-b.onrender.com/api/analytics/matching-summary', { headers }),
+        fetch(`https://sellermetrics-b.onrender.com/api/analytics/historical-trend?days=${chartDays}`, { headers }),
+        fetch('https://sellermetrics-b.onrender.com/api/analytics/product-profitability', { headers }),
+        fetch('https://sellermetrics-b.onrender.com/api/analytics/monthly-summary', { headers }),
+        fetch('https://sellermetrics-b.onrender.com/api/import-history', { headers }),
+        fetch('https://sellermetrics-b.onrender.com/api/analytics/returns-rto-analysis', { headers })
       ]);
 
       if (summaryRes.status === 401) {
@@ -132,7 +133,7 @@ export default function DashboardWelcome() {
       formData.append('file', file);
       if (reportingPeriod.trim()) formData.append('reporting_period', reportingPeriod.trim());
       
-      const res = await fetch(`http://127.0.0.1:8000${endpoint}`, {
+      const res = await fetch(`https://sellermetrics-b.onrender.com${endpoint}`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: formData,

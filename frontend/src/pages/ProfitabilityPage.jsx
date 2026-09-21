@@ -46,9 +46,9 @@ export default function ProfitabilityPage() {
 
     try {
       const [summaryRes, productsRes, lossReasonsRes] = await Promise.all([
-        fetch('http://127.0.0.1:8000/api/analytics/profit-summary', { headers }),
-        fetch('http://127.0.0.1:8000/api/analytics/product-profitability', { headers }),
-        fetch('http://127.0.0.1:8000/api/analytics/loss-reasons', { headers })
+        fetch('https://sellermetrics-b.onrender.com/api/analytics/profit-summary', { headers }),
+        fetch('https://sellermetrics-b.onrender.com/api/analytics/product-profitability', { headers }),
+        fetch('https://sellermetrics-b.onrender.com/api/analytics/loss-reasons', { headers })
       ]);
 
       if (!summaryRes.ok || !productsRes.ok) {
