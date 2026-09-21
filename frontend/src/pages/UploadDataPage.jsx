@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
-import { 
+import { API_URL } from '../config';
+
+import {
   UploadCloud, FileSpreadsheet, AlertCircle, CheckCircle2, X, FileText,
   ShoppingCart, CreditCard, Undo2, Package, Megaphone, Boxes, CircleDollarSign
 } from 'lucide-react';
-
 export default function UploadDataPage() {
   const { user } = useOutletContext();
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function UploadDataPage() {
     const token = localStorage.getItem('access_token');
     if (!token) return;
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/import-history', {
+      const res = await fetch(`${API_URL}/api/import-history`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) setImportHistory(await res.json());
@@ -77,8 +78,7 @@ export default function UploadDataPage() {
       const formData = new FormData();
       formData.append('file', file);
       if (reportingPeriod.trim()) formData.append('reporting_period', reportingPeriod.trim());
-      
-      const res = await fetch(`http://127.0.0.1:8000${endpoint}`, {
+      const res = await fetch(`${API_URL}${endpoint}`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` },
         body: formData,
